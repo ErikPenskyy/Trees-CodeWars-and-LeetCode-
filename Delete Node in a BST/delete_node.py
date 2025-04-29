@@ -5,29 +5,6 @@ class TreeNode:
         self.left = left
         self.right = right
 
-def bst_to_tree(bst):
-    """turns bst list into a tree"""
-    if not bst or bst[0] is None:
-        return None
-
-    root = TreeNode(bst[0])
-    tree_queue = deque([root])
-    num = 1
-
-    while tree_queue and num < len(bst):
-        node = tree_queue.popleft()
-        if num < len(bst) and bst[num] is not None:
-            node.left = TreeNode(bst[num])
-            tree_queue.append(node.left)
-        num += 1
-
-        if num < len(bst) and bst[num] is not None:
-            node.right = TreeNode(bst[num])
-            tree_queue.append(node.right)
-        num += 1
-
-    return root
-
 
 class Solution:
     def deleteNode(self, root, key):
